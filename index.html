@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <h1>JackGPT</h1>
+        <p id="resp"></p>
+        <script>
+            var sse = new EventSource("localhost:8080")
+            var resp = document.getElementById("resp")
+
+            sse.onmessage = function(e){
+                resp.innerHTML += e.data + ' '
+            };
+
+        </script>
+    </body>
+</html>
