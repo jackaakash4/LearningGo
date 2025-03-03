@@ -25,7 +25,7 @@ func validateDivisior(a, b int) (int, error) {
 
 func main() {
 
-	result, err := validateDivisior(20, 0)
+	result, err := validateDivisior(20, 10)
 
 	var ae *customError
 	if errors.As(err, &ae) {
