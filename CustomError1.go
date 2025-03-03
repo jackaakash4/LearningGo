@@ -12,13 +12,13 @@ type customError struct {
 	message string
 }
 
-func (e *customError) Error() error {
+func (e *customError) Error() string {
 	return fmt.Sprintf("%d - %s", e.arg, e.message)
 }
 
 func validateDivisior(a, b int) (int, error) {
 	if b == 0 {
-		return -1, &customError{arg, "Divisible by zero"}
+		return -1, &customError{b, "Divisible by zero"}
 	}
 	return a / b, nil
 }
