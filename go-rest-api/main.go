@@ -3,22 +3,31 @@ package main
 import (
     "fmt"
     "net/http"
-    "log"
     "io"
+    "log"
 )
 
-func main() {
+func main(){
+    
 
-    resp, err := http.Get("https://example.com")
+    //http client
+
+    resp, err := http.Get("https://jsonplaceholder.typicode.com/users/1")
 
     if err != nil {
-        log.Fatal(err)
+        log.Fatal("Error in response:", err)
     }
 
     defer resp.Body.Close()
 
+    //reading the response
+
     body, err := io.ReadAll(resp.Body)
 
-    fmt.Println("Respose body: ", body)
+    if err != nil {
+        log.Fatal("Error in reading the respoonse body: ", err)
+    }
+
+    fmt.Println("Response from the server is ", string(body))
 }
 
